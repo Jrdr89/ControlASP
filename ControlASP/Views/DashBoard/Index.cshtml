@@ -1,0 +1,193 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Total de Reservas -->
+        <div class="col-xl-3 col-md-6 mb-4" >
+            <a href="@Url.Action("Listado","Reservas")" class="card border-left-primary shadow h-100 py-2">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total de Reservas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalReservas">123</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-bed fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+
+        <!-- Ingresos Mensuales -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a href="@Url.Action("Finanzas","Reportes")" class="card border-left-primary shadow h-100 py-2">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Ingresos Mensuales
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ingresosMensuales">$45,678</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Gastos Mensuales
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="ingresosMensuales">$40,678</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Ocupación Actual -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Ocupación Actual
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="ocupacionActual">85%</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habitaciones Disponibles -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Habitaciones Disponibles
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="habitacionesDisponibles">30</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-bed fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Gráfico de Ingresos Mensuales -->
+        <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 bg-secondary">
+                    <h6 class="m-0 font-weight-bold text-white">Ingresos Mensuales</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area" style="height: 350px !important;">
+                        <canvas id="chartIngresosMensuales"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gráfico de Ocupación por Planta -->
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 bg-secondary">
+                    <h6 class="m-0 font-weight-bold text-white">Ocupación por Planta</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-pie" style="height: 350px !important;">
+                        <canvas id="chartOcupacionPlanta"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- SCRIPTS PARA ESTA PÁGINA -->
+    <!-- Bibliotecas necesarias para los gráficos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <!-- Configuración de datos de ejemplo -->
+    <script>
+        document.getElementById('totalReservas').innerText = '215';
+        document.getElementById('ingresosMensuales').innerText = '$38,500';
+        document.getElementById('ocupacionActual').innerText = '78%';
+        document.getElementById('habitacionesDisponibles').innerText = '42';
+
+        // Gráfico de Ingresos Mensuales (ejemplo)
+        var ctxIngresosMensuales = document.getElementById('chartIngresosMensuales').getContext('2d');
+        var chartIngresosMensuales = new Chart(ctxIngresosMensuales, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
+                datasets: [{
+                    label: 'Ingresos Mensuales',
+                    data: [3800, 4500, 5400, 6200, 5800, 7200, 7500],
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                }]
+            },
+            options: {
+                maintainAspectRatio: false
+            }
+        });
+
+        // Gráfico de Ocupación por Planta (ejemplo)
+        var ctxOcupacionPlanta = document.getElementById('chartOcupacionPlanta').getContext('2d');
+        var chartOcupacionPlanta = new Chart(ctxOcupacionPlanta, {
+            type: 'pie',
+            data: {
+                labels: ['Planta 1', 'Planta 2', 'Planta 3', 'Planta 4'],
+                datasets: [{
+                    data: [20, 30, 25, 15],
+                    backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(75, 192, 192)', 'rgb(255, 205, 86)'],
+                }]
+            },
+            options: {
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+}

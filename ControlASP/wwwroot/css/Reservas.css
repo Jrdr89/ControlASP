@@ -1,0 +1,53 @@
+﻿
+.custom-grid {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+    .custom-table th, .custom-table td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #c0c0c0;
+    }
+
+    .custom-grid th {
+        background-color: #0078d4;
+        color: #fff;
+    }
+
+    .custom-grid tr:nth-child(even) {
+        background-color: #f7f7f7;
+    }
+
+    .custom-grid tr:hover {
+        background-color: #dceaf3;
+    }
+
+    .custom-grid button {
+        border: 0;
+        background-color: transparent;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .custom-grid .tbtn {
+        margin: 0;
+        padding: 0;
+    }
+
+    .custom-grid i {
+        margin-right: 5px;
+    }
+/* Estilos para dispositivos móviles (consulta de medios) */
+@media screen and (max-width: 768px) {
+    .custom-grid th, .custom-grid td {
+        display: block;
+        width: 100%;
+    }
+
+    .custom-grid th {
+        display: none;
+    }
+}

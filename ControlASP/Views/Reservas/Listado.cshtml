@@ -1,0 +1,128 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/css/Reservas.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Nombre Cliente</th>
+                    <th>NIF</th>
+                    <th>Numero habitación</th>
+                    <th>Ocupantes</th>
+                    <th>Agencia</th>
+                    <th>Fecha entrada</th>
+                    <th>Fecha Salida</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="toggler area">
+                    <td colspan="20" class="page-header">
+                        <button type="button" class="tbtn area"><i class="fa fa-plus-circle"></i> Área 1</button>
+                    </td>
+                </tr>
+
+                <!-- Filas para Área 1 -->
+                <tr class="toggler block area-1">
+                    <td colspan="20" class="page-header">
+                        <button type="button" class="tbtn block"><i class="fa fa-plus-circle"></i> Bloque 1 (Área 1)</button>
+                    </td>
+                </tr>
+                <tr class="toggler client area-1">
+                    <td>2023-10-01</td>
+                    <td>Juan Pérez</td>
+                    <td>12345678A</td>
+                    <td>101</td>
+                    <td>2</td>
+                    <td>Booking</td>
+                    <td>2023-10-01</td>
+                    <td>2023-10-10</td>
+                </tr>
+                <!-- Más clientes dentro de Bloque 1 (Área 1) -->
+
+                <tr class="toggler block area-1">
+                    <td colspan="20" class="page-header">
+                        <button type="button" class="tbtn block"><i class="fa fa-plus-circle"></i> Bloque 2 (Área 1)</button>
+                    </td>
+                </tr>
+                <tr class="toggler client area-1">
+                    <td>2023-10-02</td>
+                    <td>Sara Fernández</td>
+                    <td>23456789F</td>
+                    <td>105</td>
+                    <td>2</td>
+                    <td>Expedia</td>
+                    <td>2023-10-02</td>
+                    <td>2023-10-12</td>
+                </tr>
+                <!-- Más clientes dentro de Bloque 2 (Área 1) -->
+                <!-- Fin de Área 1 -->
+                <!-- Filas para Área 2 -->
+                <tr class="toggler block area-2">
+                    <td colspan="20" class="page-header">
+                        <button type="button" class="tbtn block"><i class="fa fa-plus-circle"></i> Bloque 1 (Área 2)</button>
+                    </td>
+                </tr>
+                <tr class="toggler client area-2">
+                    <td>2023-10-03</td>
+                    <td>Miguel López</td>
+                    <td>34567890G</td>
+                    <td>201</td>
+                    <td>3</td>
+                    <td>Airbnb</td>
+                    <td>2023-10-03</td>
+                    <td>2023-10-13</td>
+                </tr>
+                <!-- Más clientes dentro de Bloque 1 (Área 2) -->
+
+                <tr class="toggler block area-2">
+                    <td colspan="20" class="page-header">
+                        <button type="button" class="tbtn block"><i class="fa fa-plus-circle"></i> Bloque 2 (Área 2)</button>
+                    </td>
+                </tr>
+                <tr class="toggler client area-2">
+                    <td>2023-10-04</td>
+                    <td>María Gómez</td>
+                    <td>45678901H</td>
+                    <td>205</td>
+                    <td>2</td>
+                    <td>Booking</td>
+                    <td>2023-10-04</td>
+                    <td>2023-10-14</td>
+                </tr>
+                <!-- Más clientes dentro de Bloque 2 (Área 2) -->
+                <!-- Fin de Área 2 -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".tbtn.area").click(function () {
+                $(this).parents("tbody").find(".toggler.area").toggleClass("toggler1");
+                $(this).find("i").toggleClass("fa-minus-circle fa-plus-circle");
+            });
+
+            $(".tbtn.block").click(function () {
+                $(this).parents("tbody").find(".toggler.block." + $(this).text().trim()).toggleClass("toggler1");
+                $(this).find("i").toggleClass("fa-minus-circle fa-plus-circle");
+            });
+
+            $(".tbtn.client").click(function () {
+                $(this).parents("tbody").find(".toggler.client." + $(this).text().trim()).toggleClass("toggler1");
+                $(this).find("i").toggleClass("fa-minus-circle fa-plus-circle");
+            });
+        });
+    </script>
+</body>
+</

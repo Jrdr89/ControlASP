@@ -1,0 +1,212 @@
+﻿@{
+    ViewData["Title"] = "Finanzas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Finanzas</h1>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Gastos</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Total gastos  -->
+                <div class="col-12">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-2">Total gastos Mes</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalgastosmes">$0</div>
+                </div>
+
+                <!-- Saldo Bancos y Caja -->
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Saldo Bancos y Caja
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="saldoBancosCaja">$10,000</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-wallet fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Próximos recibos -->
+        
+                    <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Próximos Recibos
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                    <table class="table custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha Cobro</th>
+                                                <th>Emisor</th>
+                                                <th>Importe</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>2023-10-15</td>
+                                                <td>Proveedor A</td>
+                                                <td>$500</td>
+                                            </tr>
+                                            <!-- Agregar más filas según los próximos recibos -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Cuotas a Pagar -->
+                <div class="col-xl-4 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Cuotas a Pagar
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                <table class="table custom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Concepto</th>
+                                            <th>Importe</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Prestamo 1</td>
+                                            <td>$1,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alquiler Local</td>
+                                            <td>$2,000</td>
+                                        </tr>
+                                        <!-- Agregar más filas según las cuotas a pagar -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Total Nóminas Próximo Mes -->
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3 bg-second-primary">
+                                <h6 class="m-0 font-weight-bold text-white">Total Nóminas Mes Corriente</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalNominas">$5,000</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ingresos -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Ingresos</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Total Ingresos Semana -->
+                <div class="col-12">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-2">Total Ingresos Mes</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalIngresos">$0</div>
+                </div>
+
+                <!-- Total facturado semana -->
+                <div class="col-xl-6 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-2">Total Facturado Semana</div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Día</th>
+                                            <th>Ingresos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Lunes</td>
+                                            <td>$1,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Martes</td>
+                                            <td>$1,800</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Miércoles</td>
+                                            <td>$1,200</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jueves</td>
+                                            <td>$1,700</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Viernes</td>
+                                            <td>$1,600</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Otros ingresos -->
+                <div class="col-xl-6 col-md-6 mb-4">
+                    <div class="card border-left-warning shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-2">Otros Ingresos</div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Concepto</th>
+                                            <th>Ingresos</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Alquiler de Salón de Eventos</td>
+                                            <td>$2,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Servicios de Restaurante</td>
+                                            <td>$3,200</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ventas de Souvenirs</td>
+                                            <td>$800</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
